@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CJ Travel Escapes | Travel with Chandra</title>
+    <meta
+      name="description"
+      content="CJ Travel Escapes / Travel with Chandra offers concierge-style travel planning for beach escapes, cruises, and stylish city getaways."
+    />
+    <!-- Google Fonts: elegant headline + clean body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              script: ['Great Vibes', 'cursive'],
+              sans: ['Inter', 'ui-sans-serif', 'system-ui'],
+            },
+            boxShadow: {
+              soft: '0 20px 50px rgba(15, 118, 110, 0.15)',
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-cyan-50 text-slate-900 font-sans">
+    <!-- Sticky Navigation -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-cyan-100">
+      <nav class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
+        <a href="#home" class="text-xl font-semibold tracking-wide text-teal-700">
+          CJ Travel Escapes
+        </a>
+        <button
+          id="menu-button"
+          class="md:hidden inline-flex items-center justify-center rounded-full border border-teal-200 p-2 text-teal-700"
+          aria-label="Toggle navigation"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+        <div class="hidden md:flex items-center gap-6 text-sm font-medium">
+          <a href="#home" class="hover:text-teal-600">Home</a>
+          <a href="#about" class="hover:text-teal-600">About</a>
+          <a href="#services" class="hover:text-teal-600">Services</a>
+          <a href="#featured" class="hover:text-teal-600">Featured Escapes</a>
+          <a href="#reviews" class="hover:text-teal-600">Reviews</a>
+          <a href="#faqs" class="hover:text-teal-600">FAQs</a>
+          <a href="#contact" class="hover:text-teal-600">Contact</a>
+        </div>
+        <a
+          href="#contact"
+          class="hidden md:inline-flex items-center rounded-full bg-teal-600 px-5 py-2 text-sm font-semibold text-white shadow-soft transition hover:bg-teal-700"
+        >
+          Book a Consultation
+        </a>
+      </nav>
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="hidden border-t border-cyan-100 bg-white md:hidden">
+        <div class="flex flex-col gap-2 px-4 py-4 text-sm font-medium">
+          <a href="#home" class="py-1">Home</a>
+          <a href="#about" class="py-1">About</a>
+          <a href="#services" class="py-1">Services</a>
+          <a href="#featured" class="py-1">Featured Escapes</a>
+          <a href="#reviews" class="py-1">Reviews</a>
+          <a href="#faqs" class="py-1">FAQs</a>
+          <a href="#contact" class="py-1">Contact</a>
+          <a
+            href="#contact"
+            class="mt-2 inline-flex items-center justify-center rounded-full bg-teal-600 px-5 py-2 text-sm font-semibold text-white"
+          >
+            Book a Consultation
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero Section -->
+      <section id="home" class="relative overflow-hidden">
+        <div class="absolute inset-0">
+          <img
+            src="https://picsum.photos/1440/900?random=24"
+            alt="Tropical beach with palm trees"
+            class="h-full w-full object-cover"
+          />
+          <div class="absolute inset-0 bg-gradient-to-r from-teal-900/80 via-teal-700/60 to-cyan-500/40"></div>
+        </div>
+        <div class="relative mx-auto flex max-w-6xl flex-col items-start gap-6 px-4 py-24 sm:py-32 text-white">
+          <p class="text-sm uppercase tracking-[0.3em] text-amber-200">Travel with Chandra</p>
+          <h1 class="text-4xl sm:text-5xl md:text-6xl font-script">
+            Travel Well. Escape Often.
+          </h1>
+          <p class="max-w-2xl text-base sm:text-lg text-cyan-50">
+            Personalized travel planning for beach escapes, cruises, and stylish city getaways—without the stress.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-3">
+            <a
+              href="#contact"
+              class="rounded-full bg-amber-400 px-6 py-3 text-sm font-semibold text-slate-900 shadow-soft transition hover:bg-amber-300"
+            >
+              Book With Me
+            </a>
+            <a
+              href="#featured"
+              class="rounded-full border border-white/70 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
+            >
+              View Featured Escapes
+            </a>
+          </div>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <span class="rounded-full bg-white/10 px-4 py-2 text-xs uppercase tracking-wide">
+              Curated Itineraries
+            </span>
+            <span class="rounded-full bg-white/10 px-4 py-2 text-xs uppercase tracking-wide">
+              Stress-Free Planning
+            </span>
+            <span class="rounded-full bg-white/10 px-4 py-2 text-xs uppercase tracking-wide">
+              Group Trip Expertise
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section id="about" class="bg-amber-50/60 py-16">
+        <div class="mx-auto grid max-w-6xl items-center gap-10 px-4 md:grid-cols-2">
+          <div class="relative">
+            <img
+              src="https://picsum.photos/600/720?random=12"
+              alt="Chandra travel advisor portrait"
+              class="rounded-3xl shadow-soft"
+            />
+            <div class="absolute -bottom-6 -left-6 hidden rounded-3xl bg-white/80 px-6 py-4 text-sm text-slate-700 shadow-soft md:block">
+              Concierge-style planning with heart.
+            </div>
+          </div>
+          <div class="space-y-5">
+            <p class="text-sm uppercase tracking-[0.3em] text-teal-600">About CJ Travel Escapes</p>
+            <h2 class="text-3xl sm:text-4xl font-script text-slate-900">
+              A luxury-minded travel experience, curated just for you.
+            </h2>
+            <p class="text-base text-slate-700">
+              I’m Chandra—your personal travel advisor. I design elevated escapes with concierge-level care,
+              from beachfront retreats to cosmopolitan city itineraries. My role is to handle the details,
+              advocate for your preferences, and ensure your trip feels effortless from start to finish.
+            </p>
+            <div>
+              <p class="text-sm font-semibold text-slate-800">Specialties</p>
+              <div class="mt-3 flex flex-wrap gap-2">
+                <span class="rounded-full bg-white px-4 py-2 text-xs font-medium text-teal-700 shadow">Cruises</span>
+                <span class="rounded-full bg-white px-4 py-2 text-xs font-medium text-teal-700 shadow">All-Inclusive</span>
+                <span class="rounded-full bg-white px-4 py-2 text-xs font-medium text-teal-700 shadow">Couples</span>
+                <span class="rounded-full bg-white px-4 py-2 text-xs font-medium text-teal-700 shadow">Groups</span>
+                <span class="rounded-full bg-white px-4 py-2 text-xs font-medium text-teal-700 shadow">Foodie Travel</span>
+                <span class="rounded-full bg-white px-4 py-2 text-xs font-medium text-teal-700 shadow">City Escapes</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Services Section -->
+      <section id="services" class="py-16">
+        <div class="mx-auto max-w-6xl px-4">
+          <div class="flex flex-col gap-3 text-center">
+            <p class="text-sm uppercase tracking-[0.3em] text-teal-600">Services</p>
+            <h2 class="text-3xl sm:text-4xl font-script">Signature planning services</h2>
+            <p class="text-slate-600">Every itinerary is tailored to your style, pace, and priorities.</p>
+          </div>
+          <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <!-- Card -->
+            <article class="rounded-3xl bg-white p-6 shadow-soft">
+              <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-cyan-100 text-teal-700">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2 4 4 8-8 4 4" />
+                </svg>
+              </div>
+              <h3 class="text-lg font-semibold">Beach Escapes</h3>
+              <p class="mt-2 text-sm text-slate-600">Oceanfront stays, private transfers, and relaxed itineraries.</p>
+              <a href="#faqs" class="mt-4 inline-flex text-sm font-semibold text-teal-600">Learn more →</a>
+            </article>
+            <article class="rounded-3xl bg-white p-6 shadow-soft">
+              <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-cyan-100 text-teal-700">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7h18M5 7v12a2 2 0 002 2h10a2 2 0 002-2V7" />
+                </svg>
+              </div>
+              <h3 class="text-lg font-semibold">Cruises</h3>
+              <p class="mt-2 text-sm text-slate-600">Cabin selection, shore excursions, and curated port experiences.</p>
+              <a href="#faqs" class="mt-4 inline-flex text-sm font-semibold text-teal-600">Learn more →</a>
+            </article>
+            <article class="rounded-3xl bg-white p-6 shadow-soft">
+              <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-cyan-100 text-teal-700">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2l4 8-4 12-4-12 4-8z" />
+                </svg>
+              </div>
+              <h3 class="text-lg font-semibold">Couples & Celebrations</h3>
+              <p class="mt-2 text-sm text-slate-600">Honeymoons, anniversaries, and romantic getaways.</p>
+              <a href="#contact" class="mt-4 inline-flex text-sm font-semibold text-teal-600">Learn more →</a>
+            </article>
+            <article class="rounded-3xl bg-white p-6 shadow-soft">
+              <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-cyan-100 text-teal-700">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h10M7 16h10" />
+                </svg>
+              </div>
+              <h3 class="text-lg font-semibold">Group Trips</h3>
+              <p class="mt-2 text-sm text-slate-600">Milestones, retreats, and stress-free coordination.</p>
+              <a href="#contact" class="mt-4 inline-flex text-sm font-semibold text-teal-600">Learn more →</a>
+            </article>
+            <article class="rounded-3xl bg-white p-6 shadow-soft">
+              <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-cyan-100 text-teal-700">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+                </svg>
+              </div>
+              <h3 class="text-lg font-semibold">City Getaways</h3>
+              <p class="mt-2 text-sm text-slate-600">Stylish hotels, food scenes, and cultural highlights.</p>
+              <a href="#faqs" class="mt-4 inline-flex text-sm font-semibold text-teal-600">Learn more →</a>
+            </article>
+            <article class="rounded-3xl bg-white p-6 shadow-soft">
+              <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-cyan-100 text-teal-700">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v8m-4-4h8" />
+                </svg>
+              </div>
+              <h3 class="text-lg font-semibold">Food & Culture</h3>
+              <p class="mt-2 text-sm text-slate-600">Chef experiences, tastings, and immersive local moments.</p>
+              <a href="#faqs" class="mt-4 inline-flex text-sm font-semibold text-teal-600">Learn more →</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Featured Escapes -->
+      <section id="featured" class="bg-white py-16">
+        <div class="mx-auto max-w-6xl px-4">
+          <div class="flex flex-col gap-3 text-center">
+            <p class="text-sm uppercase tracking-[0.3em] text-teal-600">Featured Escapes</p>
+            <h2 class="text-3xl sm:text-4xl font-script">Handpicked destinations to inspire your next escape</h2>
+            <p class="text-slate-600">Select a destination and request a custom quote.</p>
+          </div>
+          <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <!-- Tile Template -->
+            <article class="rounded-3xl border border-cyan-100 bg-cyan-50 p-6 shadow-soft">
+              <div class="flex items-center justify-between">
+                <h3 class="text-lg font-semibold">Puerto Rico</h3>
+                <span class="rounded-full bg-white px-3 py-1 text-xs font-semibold text-teal-600">All-Inclusive</span>
+              </div>
+              <p class="mt-3 text-sm text-slate-600">Starting at <span class="font-semibold text-slate-900">$1,250</span></p>
+              <button
+                class="request-quote mt-4 w-full rounded-full bg-teal-600 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-700"
+                data-trip="Puerto Rico"
+              >
+                Request Quote
+              </button>
+            </article>
+            <article class="rounded-3xl border border-cyan-100 bg-cyan-50 p-6 shadow-soft">
+              <div class="flex items-center justify-between">
+                <h3 class="text-lg font-semibold">Turks & Caicos</h3>
+                <span class="rounded-full bg-white px-3 py-1 text-xs font-semibold text-teal-600">Beach</span>
+              </div>
+              <p class="mt-3 text-sm text-slate-600">Starting at <span class="font-semibold text-slate-900">$2,450</span></p>
+              <button
+                class="request-quote mt-4 w-full rounded-full bg-teal-600 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-700"
+                data-trip="Turks & Caicos"
+              >
+                Request Quote
+              </button>
+            </article>
+            <article class="rounded-3xl border border-cyan-100 bg-cyan-50 p-6 shadow-soft">
+              <div class="flex items-center justify-between">
+                <h3 class="text-lg font-semibold">St. Lucia</h3>
+                <span class="rounded-full bg-white px-3 py-1 text-xs font-semibold text-teal-600">Couples</span>
+              </div>
+              <p class="mt-3 text-sm text-slate-600">Starting at <span class="font-semibold text-slate-900">$2,150</span></p>
+              <button
+                class="request-quote mt-4 w-full rounded-full bg-teal-600 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-700"
+                data-trip="St. Lucia"
+              >
+                Request Quote
+              </button>
+            </article>
+            <article class="rounded-3xl border border-cyan-100 bg-cyan-50 p-6 shadow-soft">
+              <div class="flex items-center justify-between">
+                <h3 class="text-lg font-semibold">Panama City</h3>
+                <span class="rounded-full bg-white px-3 py-1 text-xs font-semibold text-teal-600">City</span>
+              </div>
+              <p class="mt-3 text-sm text-slate-600">Starting at <span class="font-semibold text-slate-900">$1,600</span></p>
+              <button
+                class="request-quote mt-4 w-full rounded-full bg-teal-600 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-700"
+                data-trip="Panama City"
+              >
+                Request Quote
+              </button>
+            </article>
+            <article class="rounded-3xl border border-cyan-100 bg-cyan-50 p-6 shadow-soft">
+              <div class="flex items-center justify-between">
+                <h3 class="text-lg font-semibold">Medellín</h3>
+                <span class="rounded-full bg-white px-3 py-1 text-xs font-semibold text-teal-600">Culture</span>
+              </div>
+              <p class="mt-3 text-sm text-slate-600">Starting at <span class="font-semibold text-slate-900">$1,400</span></p>
+              <button
+                class="request-quote mt-4 w-full rounded-full bg-teal-600 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-700"
+                data-trip="Medellín"
+              >
+                Request Quote
+              </button>
+            </article>
+            <article class="rounded-3xl border border-cyan-100 bg-cyan-50 p-6 shadow-soft">
+              <div class="flex items-center justify-between">
+                <h3 class="text-lg font-semibold">Dubai</h3>
+                <span class="rounded-full bg-white px-3 py-1 text-xs font-semibold text-teal-600">Luxury City</span>
+              </div>
+              <p class="mt-3 text-sm text-slate-600">Starting at <span class="font-semibold text-slate-900">$2,950</span></p>
+              <button
+                class="request-quote mt-4 w-full rounded-full bg-teal-600 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-700"
+                data-trip="Dubai"
+              >
+                Request Quote
+              </button>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Reviews -->
+      <section id="reviews" class="py-16">
+        <div class="mx-auto max-w-6xl px-4">
+          <div class="text-center">
+            <p class="text-sm uppercase tracking-[0.3em] text-teal-600">Reviews</p>
+            <h2 class="text-3xl sm:text-4xl font-script">Clients who travel in style</h2>
+          </div>
+          <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <article class="rounded-3xl bg-white p-6 shadow-soft">
+              <div class="flex items-center gap-1 text-amber-400">
+                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+              </div>
+              <p class="mt-3 text-sm text-slate-600">
+                “Chandra designed a flawless anniversary trip to Turks & Caicos. Every detail felt premium and
+                relaxed.”
+              </p>
+              <p class="mt-4 text-sm font-semibold text-slate-800">— A. Brooks</p>
+            </article>
+            <article class="rounded-3xl bg-white p-6 shadow-soft">
+              <div class="flex items-center gap-1 text-amber-400">
+                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+              </div>
+              <p class="mt-3 text-sm text-slate-600">
+                “Our group cruise was seamless. She managed the details so we could just show up and enjoy.”
+              </p>
+              <p class="mt-4 text-sm font-semibold text-slate-800">— M. Carter</p>
+            </article>
+            <article class="rounded-3xl bg-white p-6 shadow-soft">
+              <div class="flex items-center gap-1 text-amber-400">
+                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+              </div>
+              <p class="mt-3 text-sm text-slate-600">
+                “The Medellín itinerary was stylish and immersive. Boutique hotel, foodie spots, and all the culture.”
+              </p>
+              <p class="mt-4 text-sm font-semibold text-slate-800">— J. Ellis</p>
+            </article>
+            <article class="rounded-3xl bg-white p-6 shadow-soft">
+              <div class="flex items-center gap-1 text-amber-400">
+                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+              </div>
+              <p class="mt-3 text-sm text-slate-600">
+                “Chandra elevated our Dubai getaway with luxe recommendations and amazing service.”
+              </p>
+              <p class="mt-4 text-sm font-semibold text-slate-800">— S. Nguyen</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQs -->
+      <section id="faqs" class="bg-amber-50/60 py-16">
+        <div class="mx-auto max-w-4xl px-4">
+          <div class="text-center">
+            <p class="text-sm uppercase tracking-[0.3em] text-teal-600">FAQs</p>
+            <h2 class="text-3xl sm:text-4xl font-script">Your questions, answered</h2>
+          </div>
+          <div class="mt-10 space-y-4">
+            <div class="faq-item rounded-2xl bg-white p-5 shadow-soft">
+              <button class="faq-toggle flex w-full items-center justify-between text-left" aria-expanded="false">
+                <span class="text-sm font-semibold">How do consultations work?</span>
+                <span class="text-teal-600">+</span>
+              </button>
+              <div class="faq-content mt-3 hidden text-sm text-slate-600">
+                We start with a complimentary discovery call to align on your vision, dates, and travel style.
+              </div>
+            </div>
+            <div class="faq-item rounded-2xl bg-white p-5 shadow-soft">
+              <button class="faq-toggle flex w-full items-center justify-between text-left" aria-expanded="false">
+                <span class="text-sm font-semibold">Do you require deposits?</span>
+                <span class="text-teal-600">+</span>
+              </button>
+              <div class="faq-content mt-3 hidden text-sm text-slate-600">
+                Most suppliers require a deposit to secure reservations. I’ll confirm timelines and options upfront.
+              </div>
+            </div>
+            <div class="faq-item rounded-2xl bg-white p-5 shadow-soft">
+              <button class="faq-toggle flex w-full items-center justify-between text-left" aria-expanded="false">
+                <span class="text-sm font-semibold">Are payment plans available?</span>
+                <span class="text-teal-600">+</span>
+              </button>
+              <div class="faq-content mt-3 hidden text-sm text-slate-600">
+                Yes. Many partners offer flexible payment schedules to keep planning stress-free.
+              </div>
+            </div>
+            <div class="faq-item rounded-2xl bg-white p-5 shadow-soft">
+              <button class="faq-toggle flex w-full items-center justify-between text-left" aria-expanded="false">
+                <span class="text-sm font-semibold">Do you plan group travel?</span>
+                <span class="text-teal-600">+</span>
+              </button>
+              <div class="faq-content mt-3 hidden text-sm text-slate-600">
+                Absolutely. I manage group rates, rooming lists, and shared experiences for milestone trips.
+              </div>
+            </div>
+            <div class="faq-item rounded-2xl bg-white p-5 shadow-soft">
+              <button class="faq-toggle flex w-full items-center justify-between text-left" aria-expanded="false">
+                <span class="text-sm font-semibold">What’s included in your service?</span>
+                <span class="text-teal-600">+</span>
+              </button>
+              <div class="faq-content mt-3 hidden text-sm text-slate-600">
+                Custom research, itinerary design, bookings, and concierge support leading up to travel.
+              </div>
+            </div>
+            <div class="faq-item rounded-2xl bg-white p-5 shadow-soft">
+              <button class="faq-toggle flex w-full items-center justify-between text-left" aria-expanded="false">
+                <span class="text-sm font-semibold">How far in advance should I plan?</span>
+                <span class="text-teal-600">+</span>
+              </button>
+              <div class="faq-content mt-3 hidden text-sm text-slate-600">
+                For international or group trips, 4–8 months is ideal. Shorter timelines may still be possible.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact" class="py-16">
+        <div class="mx-auto grid max-w-6xl gap-10 px-4 lg:grid-cols-[1fr_1.1fr]">
+          <div class="space-y-5">
+            <p class="text-sm uppercase tracking-[0.3em] text-teal-600">Contact</p>
+            <h2 class="text-3xl sm:text-4xl font-script">Let’s design your escape</h2>
+            <p class="text-slate-600">
+              Share your travel vision and I’ll craft a custom proposal tailored to your style, budget, and timeline.
+            </p>
+            <div class="rounded-3xl bg-teal-600 p-6 text-white shadow-soft">
+              <h3 class="text-lg font-semibold">Book a free consultation</h3>
+              <p class="mt-2 text-sm text-teal-50">
+                Reserve time on my calendar for a complimentary discovery call.
+              </p>
+              <button class="mt-4 rounded-full bg-amber-400 px-5 py-2 text-sm font-semibold text-slate-900">
+                Calendly Placeholder
+              </button>
+            </div>
+          </div>
+          <div>
+            <form id="contact-form" class="rounded-3xl bg-white p-6 shadow-soft" novalidate>
+              <div class="grid gap-4 sm:grid-cols-2">
+                <div>
+                  <label class="text-sm font-medium" for="full-name">Full Name *</label>
+                  <input
+                    id="full-name"
+                    name="fullName"
+                    type="text"
+                    class="mt-1 w-full rounded-xl border border-cyan-100 bg-cyan-50 px-3 py-2 text-sm"
+                    required
+                  />
+                  <p class="error-message text-xs text-rose-600"></p>
+                </div>
+                <div>
+                  <label class="text-sm font-medium" for="email">Email *</label>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    class="mt-1 w-full rounded-xl border border-cyan-100 bg-cyan-50 px-3 py-2 text-sm"
+                    required
+                  />
+                  <p class="error-message text-xs text-rose-600"></p>
+                </div>
+                <div>
+                  <label class="text-sm font-medium" for="phone">Phone *</label>
+                  <input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    class="mt-1 w-full rounded-xl border border-cyan-100 bg-cyan-50 px-3 py-2 text-sm"
+                    required
+                  />
+                  <p class="error-message text-xs text-rose-600"></p>
+                </div>
+                <div>
+                  <label class="text-sm font-medium" for="trip-type">Trip Type *</label>
+                  <select
+                    id="trip-type"
+                    name="tripType"
+                    class="mt-1 w-full rounded-xl border border-cyan-100 bg-cyan-50 px-3 py-2 text-sm"
+                    required
+                  >
+                    <option value="">Select one</option>
+                    <option>Beach Escape</option>
+                    <option>Cruise</option>
+                    <option>Couples / Celebration</option>
+                    <option>Group Trip</option>
+                    <option>City Getaway</option>
+                  </select>
+                  <p class="error-message text-xs text-rose-600"></p>
+                </div>
+                <div>
+                  <label class="text-sm font-medium" for="destinations">Destination(s) *</label>
+                  <input
+                    id="destinations"
+                    name="destinations"
+                    type="text"
+                    placeholder="e.g., Turks & Caicos"
+                    class="mt-1 w-full rounded-xl border border-cyan-100 bg-cyan-50 px-3 py-2 text-sm"
+                    required
+                  />
+                  <p class="error-message text-xs text-rose-600"></p>
+                </div>
+                <div>
+                  <label class="text-sm font-medium" for="budget">Budget Range *</label>
+                  <select
+                    id="budget"
+                    name="budget"
+                    class="mt-1 w-full rounded-xl border border-cyan-100 bg-cyan-50 px-3 py-2 text-sm"
+                    required
+                  >
+                    <option value="">Select one</option>
+                    <option>$1,000 - $2,000</option>
+                    <option>$2,000 - $4,000</option>
+                    <option>$4,000 - $6,000</option>
+                    <option>$6,000+</option>
+                  </select>
+                  <p class="error-message text-xs text-rose-600"></p>
+                </div>
+                <div>
+                  <label class="text-sm font-medium" for="dates">Dates *</label>
+                  <input
+                    id="dates"
+                    name="dates"
+                    type="text"
+                    placeholder="Month/Year"
+                    class="mt-1 w-full rounded-xl border border-cyan-100 bg-cyan-50 px-3 py-2 text-sm"
+                    required
+                  />
+                  <p class="error-message text-xs text-rose-600"></p>
+                </div>
+                <div>
+                  <label class="text-sm font-medium" for="travelers">Travelers *</label>
+                  <input
+                    id="travelers"
+                    name="travelers"
+                    type="number"
+                    min="1"
+                    class="mt-1 w-full rounded-xl border border-cyan-100 bg-cyan-50 px-3 py-2 text-sm"
+                    required
+                  />
+                  <p class="error-message text-xs text-rose-600"></p>
+                </div>
+              </div>
+              <div class="mt-4">
+                <label class="text-sm font-medium" for="notes">Notes</label>
+                <textarea
+                  id="notes"
+                  name="notes"
+                  rows="4"
+                  class="mt-1 w-full rounded-xl border border-cyan-100 bg-cyan-50 px-3 py-2 text-sm"
+                ></textarea>
+              </div>
+              <div class="mt-4 flex items-center gap-2">
+                <input id="group-travel" type="checkbox" class="h-4 w-4 rounded border-cyan-200" />
+                <label for="group-travel" class="text-sm">I’m interested in group travel</label>
+              </div>
+              <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
+                <button
+                  type="submit"
+                  class="rounded-full bg-teal-600 px-6 py-3 text-sm font-semibold text-white shadow-soft hover:bg-teal-700"
+                >
+                  Submit Inquiry
+                </button>
+                <p id="form-success" class="hidden text-sm font-semibold text-teal-700">
+                  Thank you! Your request has been received. I’ll be in touch shortly.
+                </p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-white">
+      <div class="mx-auto grid max-w-6xl gap-8 px-4 py-10 sm:grid-cols-2 lg:grid-cols-3">
+        <div>
+          <h3 class="text-lg font-semibold">CJ Travel Escapes</h3>
+          <p class="mt-2 text-sm text-slate-300">
+            Elevated travel planning for beach escapes, cruises, and stylish city retreats.
+          </p>
+        </div>
+        <div>
+          <h4 class="text-sm font-semibold uppercase tracking-[0.3em] text-amber-200">Quick Links</h4>
+          <div class="mt-3 flex flex-col gap-2 text-sm text-slate-300">
+            <a href="#about" class="hover:text-white">About</a>
+            <a href="#services" class="hover:text-white">Services</a>
+            <a href="#featured" class="hover:text-white">Featured Escapes</a>
+            <a href="#contact" class="hover:text-white">Contact</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="text-sm font-semibold uppercase tracking-[0.3em] text-amber-200">Connect</h4>
+          <div class="mt-3 flex flex-col gap-2 text-sm text-slate-300">
+            <span>TikTok: @cjtravelsescapes</span>
+            <span>Instagram: @travelwithchandra</span>
+            <span>Email: hello@cjtravels.com</span>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-slate-800 py-4 text-center text-xs text-slate-400">
+        © <span id="year"></span> CJ Travel Escapes
+      </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button
+      id="back-to-top"
+      class="fixed bottom-6 right-6 hidden rounded-full bg-amber-400 px-4 py-3 text-sm font-semibold text-slate-900 shadow-soft"
+      aria-label="Back to top"
+    >
+      ↑ Top
+    </button>
+
+    <!-- Request Quote Modal -->
+    <div
+      id="quote-modal"
+      class="fixed inset-0 hidden items-center justify-center bg-slate-900/60 px-4"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="quote-title"
+    >
+      <div class="w-full max-w-lg rounded-3xl bg-white p-6 shadow-soft">
+        <div class="flex items-start justify-between">
+          <div>
+            <p class="text-sm uppercase tracking-[0.3em] text-teal-600">Request a Quote</p>
+            <h3 id="quote-title" class="text-2xl font-script">Let’s plan your escape</h3>
+          </div>
+          <button id="close-modal" class="rounded-full border border-cyan-100 px-3 py-1 text-sm">Close</button>
+        </div>
+        <p class="mt-4 text-sm text-slate-600">
+          Tell me a bit about your trip and I’ll follow up with tailored options.
+        </p>
+        <div class="mt-4">
+          <label class="text-sm font-medium" for="modal-trip">Trip destination</label>
+          <input
+            id="modal-trip"
+            type="text"
+            class="mt-2 w-full rounded-xl border border-cyan-100 bg-cyan-50 px-3 py-2 text-sm"
+            readonly
+          />
+        </div>
+        <div class="mt-6 flex gap-3">
+          <a
+            href="#contact"
+            id="modal-link"
+            class="flex-1 rounded-full bg-teal-600 px-4 py-2 text-center text-sm font-semibold text-white"
+          >
+            Continue to Form
+          </a>
+          <button id="close-modal-secondary" class="flex-1 rounded-full border border-teal-200 px-4 py-2 text-sm">
+            Maybe Later
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Mobile menu toggle
+      const menuButton = document.getElementById('menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+      menuButton.addEventListener('click', () => {
+        const isOpen = mobileMenu.classList.toggle('hidden') === false;
+        menuButton.setAttribute('aria-expanded', isOpen.toString());
+      });
+
+      // Smooth scrolling for navigation links (fallback for older browsers)
+      document.querySelectorAll('a[href^="#"]').forEach((link) => {
+        link.addEventListener('click', (event) => {
+          const targetId = link.getAttribute('href');
+          if (targetId && targetId.length > 1) {
+            const target = document.querySelector(targetId);
+            if (target) {
+              event.preventDefault();
+              target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              mobileMenu.classList.add('hidden');
+              menuButton.setAttribute('aria-expanded', 'false');
+            }
+          }
+        });
+      });
+
+      // FAQ accordion
+      document.querySelectorAll('.faq-toggle').forEach((toggle) => {
+        toggle.addEventListener('click', () => {
+          const content = toggle.parentElement.querySelector('.faq-content');
+          const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+          toggle.setAttribute('aria-expanded', (!isExpanded).toString());
+          content.classList.toggle('hidden');
+          toggle.querySelector('span:last-child').textContent = isExpanded ? '+' : '−';
+        });
+      });
+
+      // Request Quote modal interactions
+      const modal = document.getElementById('quote-modal');
+      const modalTrip = document.getElementById('modal-trip');
+      const modalLink = document.getElementById('modal-link');
+      const closeModalButtons = [
+        document.getElementById('close-modal'),
+        document.getElementById('close-modal-secondary'),
+      ];
+
+      document.querySelectorAll('.request-quote').forEach((button) => {
+        button.addEventListener('click', () => {
+          const tripName = button.dataset.trip;
+          modalTrip.value = tripName;
+          modal.classList.remove('hidden');
+          modal.classList.add('flex');
+          modalLink.addEventListener(
+            'click',
+            () => {
+              document.getElementById('destinations').value = tripName;
+            },
+            { once: true }
+          );
+        });
+      });
+
+      closeModalButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          modal.classList.add('hidden');
+          modal.classList.remove('flex');
+        });
+      });
+
+      modal.addEventListener('click', (event) => {
+        if (event.target === modal) {
+          modal.classList.add('hidden');
+          modal.classList.remove('flex');
+        }
+      });
+
+      // Back to top button
+      const backToTop = document.getElementById('back-to-top');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 400) {
+          backToTop.classList.remove('hidden');
+        } else {
+          backToTop.classList.add('hidden');
+        }
+      });
+      backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      // Form validation
+      const form = document.getElementById('contact-form');
+      const successMessage = document.getElementById('form-success');
+
+      const showError = (input, message) => {
+        const error = input.parentElement.querySelector('.error-message');
+        error.textContent = message;
+        input.classList.add('border-rose-400');
+      };
+
+      const clearError = (input) => {
+        const error = input.parentElement.querySelector('.error-message');
+        error.textContent = '';
+        input.classList.remove('border-rose-400');
+      };
+
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        successMessage.classList.add('hidden');
+
+        const requiredFields = form.querySelectorAll('[required]');
+        let hasError = false;
+
+        requiredFields.forEach((field) => {
+          if (!field.value.trim()) {
+            showError(field, 'This field is required.');
+            hasError = true;
+          } else {
+            clearError(field);
+          }
+        });
+
+        const emailField = document.getElementById('email');
+        if (emailField.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailField.value)) {
+          showError(emailField, 'Please enter a valid email.');
+          hasError = true;
+        }
+
+        if (!hasError) {
+          form.reset();
+          successMessage.classList.remove('hidden');
+        }
+      });
+
+      // Footer year
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
