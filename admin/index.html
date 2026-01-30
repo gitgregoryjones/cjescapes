@@ -1740,8 +1740,35 @@
     <div class="journey-progress" aria-hidden="true" draggable="true">
         <span class="journey-progress__bar" draggable="true"></span>
     </div>
-    <nav class="scroll-journey-indicator" aria-label="Journey sections" draggable="true"></nav>
-    <nav class="journey-mobile-nav" aria-label="Journey map" draggable="true"></nav>
+    <nav class="scroll-journey-indicator" aria-label="Journey sections" draggable="true">
+        <button type="button" class="journey-dot is-active" data-label="Home" aria-label="Go to Home" draggable="true"></button>
+        <button type="button" class="journey-dot" data-label="About" aria-label="Go to About" draggable="true"></button>
+        <button type="button" class="journey-dot" data-label="Services" aria-label="Go to Services" draggable="true"></button>
+        <button type="button" class="journey-dot" data-label="Destinations" aria-label="Go to Destinations" draggable="true"></button>
+        <button type="button" class="journey-dot" data-label="Reviews" aria-label="Go to Reviews" draggable="true"></button>
+        <button type="button" class="journey-dot" data-label="Contact" aria-label="Go to Contact" draggable="true"></button>
+    </nav>
+    <nav class="journey-mobile-nav" aria-label="Journey map" draggable="true">
+        <span class="journey-swipe-hint" draggable="true">Swipe to journey</span>
+        <button type="button" class="journey-mobile-button is-active" aria-label="Jump to Home" draggable="true">
+            <i class="fas fa-plane-departure" draggable="true"></i><span draggable="true">Home</span>
+        </button>
+        <button type="button" class="journey-mobile-button" aria-label="Jump to About" draggable="true">
+            <i class="fas fa-champagne-glasses" draggable="true"></i><span draggable="true">About</span>
+        </button>
+        <button type="button" class="journey-mobile-button" aria-label="Jump to Services" draggable="true">
+            <i class="fas fa-concierge-bell" draggable="true"></i><span draggable="true">Services</span>
+        </button>
+        <button type="button" class="journey-mobile-button" aria-label="Jump to Destinations" draggable="true">
+            <i class="fas fa-map-location-dot" draggable="true"></i><span draggable="true">Destinations</span>
+        </button>
+        <button type="button" class="journey-mobile-button" aria-label="Jump to Reviews" draggable="true">
+            <i class="fas fa-star" draggable="true"></i><span draggable="true">Reviews</span>
+        </button>
+        <button type="button" class="journey-mobile-button" aria-label="Jump to Contact" draggable="true">
+            <i class="fas fa-envelope-open-text" draggable="true"></i><span draggable="true">Contact</span>
+        </button>
+    </nav>
     <div class="journey-scroll-overlay" aria-hidden="true" draggable="true"></div>
 
     <script>
@@ -1936,13 +1963,21 @@
                 return;
             }
 
-            journeyIndicator.innerHTML = '';
-            journeyMobileNav.innerHTML = '';
+            const existingDots = Array.from(journeyIndicator.querySelectorAll('.journey-dot'));
+            const existingMobileButtons = Array.from(journeyMobileNav.querySelectorAll('.journey-mobile-button'));
 
-            const swipeHint = document.createElement('span');
-            swipeHint.className = 'journey-swipe-hint';
-            swipeHint.textContent = 'Swipe to journey';
-            journeyMobileNav.appendChild(swipeHint);
+            if (existingDots.length === journeyConfig.length && existingMobileButtons.length === journeyConfig.length) {
+                journeyDots.push(...existingDots);
+                journeyMobileButtons.push(...existingMobileButtons);
+            } else {
+                journeyIndicator.innerHTML = '';
+                journeyMobileNav.innerHTML = '';
+
+                const swipeHint = document.createElement('span');
+                swipeHint.className = 'journey-swipe-hint';
+                swipeHint.textContent = 'Swipe to journey';
+                journeyMobileNav.appendChild(swipeHint);
+            }
 
             journeyConfig.forEach((config) => {
                 const section = document.getElementById(config.id);
@@ -1950,7 +1985,7 @@
                     return;
                 }
 
-                const dot = document.createElement('button');
+                const dot = journeyDots[journeyConfig.indexOf(config)] || document.createElement('button');
                 dot.type = 'button';
                 dot.className = 'journey-dot';
                 dot.dataset.label = config.label;
@@ -1958,10 +1993,14 @@
                 dot.addEventListener('click', () => {
                     section.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 });
-                journeyIndicator.appendChild(dot);
-                journeyDots.push(dot);
+                if (!journeyIndicator.contains(dot)) {
+                    journeyIndicator.appendChild(dot);
+                }
+                if (!journeyDots.includes(dot)) {
+                    journeyDots.push(dot);
+                }
 
-                const mobileButton = document.createElement('button');
+                const mobileButton = journeyMobileButtons[journeyConfig.indexOf(config)] || document.createElement('button');
                 mobileButton.type = 'button';
                 mobileButton.className = 'journey-mobile-button';
                 mobileButton.setAttribute('aria-label', `Jump to ${config.label}`);
@@ -1969,8 +2008,12 @@
                 mobileButton.addEventListener('click', () => {
                     section.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 });
-                journeyMobileNav.appendChild(mobileButton);
-                journeyMobileButtons.push(mobileButton);
+                if (!journeyMobileNav.contains(mobileButton)) {
+                    journeyMobileNav.appendChild(mobileButton);
+                }
+                if (!journeyMobileButtons.includes(mobileButton)) {
+                    journeyMobileButtons.push(mobileButton);
+                }
             });
         };
 
