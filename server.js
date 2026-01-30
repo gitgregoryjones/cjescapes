@@ -262,13 +262,12 @@ function replaceDataBackground(html, key, value) {
 
     if (stylePattern.test(attrs)) {
       const current = attrs.match(stylePattern)[1];
-      const styleParts = current
-        .split(';')
-        .map((s) => s.trim())
-        .filter(Boolean)
-        .filter((s) => !s.toLowerCase().startsWith('background-image'));
-      styleParts.push(bgStyle);
-      const newStyle = styleParts.join('; ');
+      const withoutBg = current
+        .replace(/background-image\s*:\s*url\((?:[^)(]|\([^)]*\))*\)\s*;?/gi, '')
+        .replace(/;\s*;/g, ';')
+        .replace(/^;|;$/g, '')
+        .trim();
+      const newStyle = withoutBg ? `${withoutBg}; ${bgStyle}` : bgStyle;
       attrs = attrs.replace(stylePattern, `style="${newStyle}"`);
     } else {
       attrs = `${attrs} style="${bgStyle}"`;
