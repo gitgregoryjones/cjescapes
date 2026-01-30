@@ -3564,3 +3564,275 @@
     tool.addEventListener('dragstart', handleWireframeToolDragStart);
   });
 })();
+
+(() => {
+  const journeyConfig = [
+    {
+      id: 'home',
+      label: 'Home',
+      badge: 'Dream Destination',
+      icon: 'fa-plane-departure',
+      mobileIcon: 'fa-plane',
+      positions: [
+        { top: '12%', left: '8%', speed: 0.12 },
+        { top: '72%', left: '12%', speed: 0.08 },
+      ],
+    },
+    {
+      id: 'about',
+      label: 'About',
+      badge: 'Welcome Reception',
+      icon: 'fa-champagne-glasses',
+      mobileIcon: 'fa-champagne-glasses',
+      positions: [
+        { top: '18%', right: '12%', speed: 0.1 },
+        { top: '70%', left: '14%', speed: 0.06 },
+      ],
+    },
+    {
+      id: 'services',
+      label: 'Services',
+      badge: 'Premium Services',
+      icon: 'fa-concierge-bell',
+      mobileIcon: 'fa-bell-concierge',
+      positions: [
+        { top: '20%', left: '10%', speed: 0.11 },
+        { top: '68%', right: '14%', speed: 0.07 },
+      ],
+    },
+    {
+      id: 'destinations',
+      label: 'Destinations',
+      badge: 'Explore Destinations',
+      icon: 'fa-map-location-dot',
+      mobileIcon: 'fa-map',
+      positions: [
+        { top: '16%', right: '12%', speed: 0.09 },
+        { top: '74%', left: '16%', speed: 0.05 },
+      ],
+    },
+    {
+      id: 'reviews',
+      label: 'Reviews',
+      badge: 'Traveler Reviews',
+      icon: 'fa-star',
+      mobileIcon: 'fa-star',
+      positions: [
+        { top: '18%', left: '12%', speed: 0.1 },
+        { top: '72%', right: '16%', speed: 0.06 },
+      ],
+    },
+    {
+      id: 'contact',
+      label: 'Contact',
+      badge: 'Begin Your Escape',
+      icon: 'fa-envelope-open-text',
+      mobileIcon: 'fa-paper-plane',
+      positions: [
+        { top: '16%', right: '10%', speed: 0.1 },
+        { top: '70%', left: '12%', speed: 0.05 },
+      ],
+    },
+  ];
+
+  const progress = document.querySelector('.journey-progress');
+  const progressBar = progress?.querySelector('.journey-progress__bar');
+  const indicator = document.querySelector('.scroll-journey-indicator');
+  const mobileNav = document.querySelector('.journey-mobile-nav');
+  const overlay = document.querySelector('.journey-transition-overlay');
+
+  const sections = journeyConfig
+    .map((item) => {
+      const section = document.getElementById(item.id);
+      if (!section) return null;
+      section.dataset.journey = item.id;
+      section.classList.add('journey-section');
+      return { ...item, section };
+    })
+    .filter(Boolean);
+
+  if (!sections.length) return;
+
+  const floatingElements = [];
+  const parallaxElements = [];
+
+  const buildBadge = (section, badgeText, icon) => {
+    if (section.querySelector('.destination-badge')) return;
+    const badge = document.createElement('div');
+    badge.className = 'destination-badge';
+    badge.innerHTML = `
+      <i class="fas ${icon}" aria-hidden="true"></i>
+      <span>${badgeText}</span>
+      <span class="passport-stamp">VIP</span>
+    `;
+    section.appendChild(badge);
+  };
+
+  const addFloatingElements = (section, icon, positions) => {
+    const isMobile = window.matchMedia('(max-width: 767px)').matches;
+    const limit = isMobile ? 1 : positions.length;
+    positions.slice(0, limit).forEach((pos, index) => {
+      const floating = document.createElement('div');
+      floating.className = 'floating-travel-element';
+      floating.dataset.speed = pos.speed;
+      floating.style.top = pos.top || '10%';
+      if (pos.left) floating.style.left = pos.left;
+      if (pos.right) floating.style.right = pos.right;
+      floating.style.setProperty('--float-delay', `${index * 1.2}s`);
+      floating.style.setProperty('--float-duration', `${6 + index * 2}s`);
+      floating.innerHTML = `<i class="fas ${icon}" aria-hidden="true"></i>`;
+      section.appendChild(floating);
+      floatingElements.push(floating);
+      parallaxElements.push(floating);
+    });
+  };
+
+  sections.forEach((item, index) => {
+    buildBadge(item.section, item.badge, item.icon);
+    addFloatingElements(item.section, item.icon, item.positions);
+
+    item.section.querySelectorAll('img').forEach((img) => {
+      img.classList.add('luxury-frame');
+    });
+    item.section.querySelectorAll('[style*="background-image"]').forEach((el) => {
+      el.classList.add('luxury-frame');
+    });
+
+    if (index < sections.length - 1) {
+      const next = item.section.nextElementSibling;
+      if (!next || !next.classList.contains('journey-divider')) {
+        const divider = document.createElement('div');
+        divider.className = 'journey-divider';
+        divider.setAttribute('aria-hidden', 'true');
+        item.section.insertAdjacentElement('afterend', divider);
+      }
+    }
+  });
+
+  const buildNavButton = (item, isMobile) => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.dataset.target = item.id;
+    button.setAttribute('aria-label', `Go to ${item.label}`);
+
+    if (isMobile) {
+      button.innerHTML = `
+        <i class="fas ${item.mobileIcon}" aria-hidden="true"></i>
+        <span>${item.label}</span>
+      `;
+    } else {
+      button.className = 'journey-dot';
+      button.dataset.title = item.label;
+    }
+
+    button.addEventListener('click', () => {
+      const target = document.getElementById(item.id);
+      if (!target) return;
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
+    return button;
+  };
+
+  if (indicator) {
+    indicator.innerHTML = '';
+    sections.forEach((item) => indicator.appendChild(buildNavButton(item, false)));
+  }
+
+  if (mobileNav) {
+    mobileNav.innerHTML = '';
+    sections.forEach((item) => mobileNav.appendChild(buildNavButton(item, true)));
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    },
+    { threshold: 0.2, rootMargin: '0px 0px -10% 0px' }
+  );
+
+  sections.forEach((item) => observer.observe(item.section));
+
+  const updateActiveState = () => {
+    const scrollTop = window.scrollY || window.pageYOffset;
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    const progressPercent = maxScroll > 0 ? (scrollTop / maxScroll) * 100 : 0;
+
+    if (progressBar) {
+      progressBar.style.width = `${Math.min(100, Math.max(0, progressPercent))}%`;
+    }
+
+    const viewportTrigger = window.innerHeight * 0.4;
+    let activeIndex = 0;
+
+    sections.forEach((item, index) => {
+      const rect = item.section.getBoundingClientRect();
+      if (rect.top <= viewportTrigger && rect.bottom >= viewportTrigger) {
+        activeIndex = index;
+      }
+    });
+
+    const dots = indicator ? indicator.querySelectorAll('.journey-dot') : [];
+    dots.forEach((dot, index) => {
+      const isActive = index === activeIndex;
+      dot.classList.toggle('is-active', isActive);
+      if (isActive) {
+        dot.setAttribute('aria-current', 'true');
+      } else {
+        dot.removeAttribute('aria-current');
+      }
+    });
+
+    if (mobileNav) {
+      const buttons = mobileNav.querySelectorAll('button');
+      buttons.forEach((button, index) => {
+        button.classList.toggle('is-active', index === activeIndex);
+      });
+    }
+
+    parallaxElements.forEach((element) => {
+      const speed = Number(element.dataset.speed || 0.08);
+      const shift = scrollTop * speed * 0.2;
+      element.style.setProperty('--parallax-shift', `${shift}px`);
+    });
+  };
+
+  let overlayTimeout;
+  let progressTimeout;
+  let ticking = false;
+
+  const handleScroll = () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        updateActiveState();
+        ticking = false;
+      });
+      ticking = true;
+    }
+
+    if (progress) {
+      progress.classList.add('is-active');
+      clearTimeout(progressTimeout);
+      progressTimeout = setTimeout(() => {
+        progress.classList.remove('is-active');
+      }, 800);
+    }
+
+    if (overlay) {
+      overlay.classList.add('is-active');
+      clearTimeout(overlayTimeout);
+      overlayTimeout = setTimeout(() => {
+        overlay.classList.remove('is-active');
+      }, 500);
+    }
+  };
+
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  window.addEventListener('resize', updateActiveState);
+
+  updateActiveState();
+})();
